@@ -1,0 +1,120 @@
+//String to Int
+int num = atoi(char[] str)
+
+//Console out
+puts("...")
+
+//Formatted multitype output
+printf("%s %i %p", somechar[], someint, somepointer)
+
+//Read int
+int decks
+scanf("%i", &decks) //have to use the adress
+//%f for floating point number
+
+//Read string
+char s[20];
+scanf("%19s", s) //up to 19 chars into s
+
+//Read string fgets
+fgets(s, sizeof(s), stdin); //stdin == keyboard
+
+//Main
+int main(){ return 0; }
+
+//libs
+#include <stdio.h>
+#include <stdlib.h>
+
+//Adress
+&var
+
+//Pointer
+int* p = &var;
+
+//Dereference
+int num = *p;
+*p = 10;
+
+//Create a string
+char s[] = "Hallo Welt"
+
+//String pointers are immutable
+char* s = "Hallo Welt"
+s[5] = 'A'; //-> ERROR
+
+//Sizeof
+sizeof(int) -> 4
+sizeof("1234") -> 4 + 1 -> 5
+
+//Arrays are converted to pointers to first element when passed to a function
+//Size of array is not retrievable after conversion to pointer. 
+//This loss of information is called "decay"
+char s[] = "Hallo Welt"
+sizeof(s) -> 11 //Size of the array
+size(s); -> 8 //Size of the pointer s
+void size(char s[]){
+	return sizeof(s) 
+}
+
+//arrays are implicitly converted to pointers to the first element
+int c[] = {1,2,3};
+int* pi = c; //Ok
+*pi // -> 1
+
+//Init array
+int i[] = {1, 2, 3, 4};
+
+//Accessing array element
+i[0]
+*(i + 0)
+
+//Accessing array from element 6
+i + 6
+
+//A riddle
+int i[] = {1, 2, 3};
+i[2] == *(i + 2) == *(2 + i) == 2[i]
+
+
+//Const!
+const int i = 0;
+
+//String functions
+#include <string.h>
+strlen //length
+strcat //concatinate two strings
+strcpy //copy string from one to another
+strstr //find location of one string in another
+strcmp //compare two strings
+strchr //find location of char in string
+
+//Redirecting input with < and the output with >
+first < data.txt > out.txt
+
+//Redirecting stderr
+first < data.txt 2> errors.txt
+
+//Piping data from one software to the other
+some | thing < input.txt > output.txt
+
+//Send to stdout and stderr
+fprintf(stdout, "I like turtles")
+fprintf(stderr, "I like turtles %i", someint)
+
+//File
+FILE* in = fopen("input.txt", "r");
+FILE* out = fopen("output.txt", "w");
+
+fprintf(out, "Yo");
+fscanf(in, "%79", chars)
+
+fclose(in);
+
+//Commandline parameters
+int main(int argcount, char *argv[]){ return 0; }
+//First parameter is name of software
+
+//Read option flags
+#include <unistd.h>
+getopt(argc, argv, "optionstring")
