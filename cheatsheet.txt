@@ -118,3 +118,92 @@ int main(int argcount, char *argv[]){ return 0; }
 //Read option flags
 #include <unistd.h>
 getopt(argc, argv, "optionstring")
+
+//Casting like in Java
+float x = (float) y / z;
+
+//Unsigned and long variables
+unsigned long x; //Double the size of a long
+long long x; //Really big number
+long double x; //Really percise number
+
+//Get limits
+#include <limits.h> //For int ant chars etc
+#include <float.h> //For float
+INT_MAX, INT_MIN
+FLT_MAX, FLT_MIN
+
+//Declare functions via their signature first to avoid problems with the order of definition
+float returnsomeFloat(int x);
+
+//This can be extracted into a h header file
+//The import of this file looks like this
+#include "filename.h"
+
+//Share variables: Define them in an header file, mark them with extern
+extern int a = 0;
+
+//Compile and link multiple files
+//Create header, include header in all c files -> can use function
+g++ somename.c someother.c -o out
+
+//Compile all files to object code (auto skip existing)
+gcc -c *.c
+
+//Link files after object code is generated
+gcc *.o -o out
+
+//Make compile
+target.o: dependency1.c dependency2.c dependency3.h
+	gcc -c target.c
+	
+//Make link
+target: dependency1.o dependency2.o
+	gcc dependency1.o dependency2.o -o target
+	
+//Create makefiles with autoconf
+
+//Strunct
+struct fish {
+	int size;
+	const char* name; 
+}
+
+//Instanciate
+struct fish mark = {10, "Mark"};
+
+//Access
+mark.size = 20;
+
+//typedef to alias types
+typedef int zahl;
+zahl a = 10;
+
+//Possible to skip struct name with typedef
+typedef struct {
+	int size;
+	const char* name; 
+} fish;
+
+//fish* f = &{10, "Mark"};
+(*f).size //10
+*f.size // == *(f.size) ERROR
+f->size //10
+
+//Init struct
+fish f = {.size = 10};
+
+//Union is a struct that only holds one data
+typedef union{
+	int count;
+	float liters;
+} quantity;
+//You can only set one value, the size is equal to the bigger possible types size
+
+//enums
+enum colors {RED, GREEN, BLUE};
+enum colors favoriteColor = BLUE;
+typedef enum {RED, GREEN, BLUE} colors;
+
+//Bitfields; How many bits shoulds be reserved?
+unsigned int onebit:1; //Only uses one bit -> 0/1
