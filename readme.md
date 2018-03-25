@@ -1,4 +1,4 @@
-# Cheatsheet
+# Cheat sheet
 ## String to Int
 ```c
 int num = atoi(char[] str)
@@ -76,8 +76,18 @@ sizeof(int) -> 4
 sizeof("1234") -> 4 + 1 -> 5
 ```
 
-## Arrays are converted to pointers to first element when passed to a function
-Size of array is not retrievable after conversion to pointer. This loss of information is called "decay"
+## Arrays and pointers
+
+Arrays are implicitly converted to pointers to the first element
+
+```c
+int c[] = {1,2,3};
+int* pi = c; //Ok
+*pi // -> 1
+```
+
+Arrays are converted to pointers to first element when passed to a function. Size of array is not retrievable after conversion to pointer. This loss of information is called "decay"
+
 ```c
 char s[] = "Hallo Welt"
 sizeof(s) -> 11 //Size of the array
@@ -87,14 +97,7 @@ void size(char s[]){
 }
 ```
 
-## arrays are implicitly converted to pointers to the first element
-```c
-int c[] = {1,2,3};
-int* pi = c; //Ok
-*pi // -> 1
-```
-
-## Init array
+## Init an array
 ```c
 int i[] = {1, 2, 3, 4};
 ```
@@ -241,7 +244,8 @@ target: dependency1.o dependency2.o
 	gcc dependency1.o dependency2.o -o target
 ```	
 	
-## Create makefiles with autoconf
+## Create makefiles automatically
+With autoconf
 
 ## Strunct
 ```c
@@ -279,8 +283,10 @@ f->size //10
 fish f = {.size = 10};
 ```
 
-## Union is a struct that only holds one data
+## Union is a struct that only holds only one data field
+
 You can only set one value, the size is equal to the bigger possible types size
+
 ```c
 typedef union{
 	int count;
